@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      var people= ['孙权' , '陈李鹏' , '潘铖']
+      var time = ['早上' , '中午' , '晚上']
+      var places = ['在厕所' , '在床上' , '在飞机上']
+      var active = ['吃饭' , '打飞机' , '撸啊撸','睡觉']
+      var peopleRandNum = Math . floor (Math . random () * people . length)
+      var timeRandNum = Math . floor (Math . random () * time . length)
+      var placeRandNum = Math . floor (Math . random () * places . length )
+      var activeRandNum = Math . floor (Math . random () * active . length )
+      alert ( people [peopleRandNum] + time [timeRandNum] + places [placeRandNum] + active [activeRandNum] )
+    </script>
+</body>
+</html>
