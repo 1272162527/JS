@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      var people= ['孙权' , '陈李鹏' , '潘铖']
+      var time = ['早上' , '中午' , '晚上']
+      var places = ['在厕所' , '在床上' , '在飞机上']
+      var active = ['吃饭' , '打飞机' , '撸啊撸','睡觉']
+
+      var phrase = choose (people) + choose (time) + choose (places) + choose (active)
+      alert ( phrase)
+      function choose (array) {
+        return array [Math . floor (Math . random () * array . length)]
+      }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var hightest = 0
+    var xiang = []
+    var j = 0
+    var scores = [ 90 , 85 , 80 , 75 , 70 , 100 , 100 ]
+    for ( var i = 0 ; i < scores.length ; i++ ) {
+        if ( hightest < scores[i] ) {
+            hightest = scores[i]
+            xiang = []
+            j = 0
+        } else if (scores[i] == hightest) {
+          j++
+          xiang[j] = i
+          }
+    }
+    for (var k = 0; k < xiang.length; k++) {
+        document.write ("score[" + xiang[k] + " ] = " + hightest + "<br>")
+    }
+  </script>
+</body>
+</html>
