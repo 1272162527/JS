@@ -28,34 +28,35 @@ var model = {
            { locations: [0, 0, 0], hits: ["", "", ""] },
            { locations: [0, 0, 0], hits: ["", "", ""] } ],
   fire: function(guess) {
-    for (var i = 0; i < this.numShips; i++) {
+    for (var i = 0 ; i<this.numShips; i++) {
       var ship = this.ships[i];
-      var index = ship.locations.indexOf(guess);
-      if (index >= 0) {
-        for (var i = 0 ; i < this.shipLength ; i++) {
-          var boatcolor = document.getElementById(ship.locations[i])
-          view.displayHit (ship.locations[i])
-          boatcolor.style.backgroundColor = 'green'
+      var index =ship.locations.indexOf(guess);
+      if (index >=0) {
+        ship.hits[index] = 'hit';
+        var shipboom = document.getElementById(ship.locations[index]);
+        shipboom.style.backgroundImage = "url(picture/boom1.png)"
+        for (var i = 0; i < ship.locations.length; i++) {
+          view.displayHit(ship.locations[i]);
         }
-        ship.hits[index] = "hit";
-        view.displayHit(guess);
-        view.displayMessage("HIT!");
+          //view.displayHit(guess);
+          view.displayMessage('hit!');
         if (this.isSunk(ship)) {
-          view.displayMessage("You sank my battleship!");
+          view.displayMessage('You sank my battleship!');
           this.shipsSunk++;
+          for (var i = 0; i < ship.locations.length; i++) {
+            var shipboom = document.getElementById(ship.locations[i])
+            shipboom.style.backgroundImage = "url(picture/boom1.png)"
+          }
         }
-        return true;
+          return true;
       }
     }
-      view.displayMiss(guess);
-      view.displayMessage("You missed.");
-      return false;
+        view.displayMiss(guess);
+        view.displayMessage('You missed.');
+        return false;
   },
   isSunk: function(ship) {
     var count = 0
-    // for (var a = 0; i < this.shipLength; a++) {
-    //   document.getElementById(ship.locations[a]).style.backgroundColor('green')
-    // }
     for (var i = 0; i < this.shipLength; i++) {
       if (ship.hits[i] === "hit") {
         count++
@@ -63,7 +64,7 @@ var model = {
       if (count >= this.shipLength*0.66) {
         return true;
       }
-    }
+      }
         return false;
   },
   generateShipLocations: function() {
@@ -161,20 +162,15 @@ var model = {
     var guessInput = document.getElementById("guessInput");
     guessInput.onkeypress = handleKeyPress;
     model.generateShipLocations();
-    //从html中找到<td>标签
-    var TD=document.getElementsByTagName('td')
-    //定义i数组从0开始计数；使td的长度大于i；当每次执行一次后i自动加1
-    for(i=0;i<TD.length;i++){
-      //点击td标签的时候，执行test函数
-      TD[i].onclick=test;
+    var TD=document.getElementsByTagName('td')//从html中找到<td>标签
+    for(i=0;i<TD.length;i++){//定义i数组从0开始计数；使td的长度大于i；当每次执行一次后i自动加1
+      TD[i].onclick=test;//点击td标签的时候，执行test函数
     }
   }
-  //函数名为test
-  function test(event){
+  function test(event){//函数名为test
     var guess = this.id;
     controller.processGuess(guess);
-    //在后台显示点击的td的位置
-    console.log(event.target.id)
+    console.log(event.target.id)//在后台显示点击的td的位置
   }
   function handleFireButton() {
     var guessInput = document.getElementById("guessInput");
